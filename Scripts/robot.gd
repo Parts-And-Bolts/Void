@@ -4,7 +4,7 @@ extends CharacterBody2D
 var sprites: Array
 
 const SPEED = 100
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -250.0
 
 func _ready():
 	
@@ -30,6 +30,12 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
+		
+		if direction < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+		
 		if sprite.animation == "idle":
 			sprite.play("walk")
 		velocity.x = direction * SPEED
