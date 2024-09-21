@@ -2,11 +2,14 @@ class_name RoomFocus
 extends Area2D
 
 @export var camera: Camera2D
+@onready var start: Marker2D = $"../.."
 
 
 
 
 func _on_body_entered(_body: Node2D) -> void:
+	var ui: UI = get_tree().current_scene.get_node("CanvasLayer").get_node("UI")
+	ui.on_change_message.call_deferred(start.get_name())
 	camera.enabled = true
 
 

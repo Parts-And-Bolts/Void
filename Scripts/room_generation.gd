@@ -6,7 +6,8 @@ extends Node2D
 var Rooms: Array[Resource]
 
 var room = 1
-@onready var LastRoom = $Start
+@onready var LastRoom: Marker2D = $"0"
+
 
 func _ready():
 	
@@ -22,5 +23,6 @@ func _ready():
 		
 		
 		LastRoom = gene
+		gene.set_name(str(room))
 		room += 1
 		pass

@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -250.0
 func _ready():
 	
 	for filePath in DirAccess.get_files_at("res://Resources/Spriteframes/"):
-		filePath
+		
 		if filePath.get_extension() == "tres":
 			sprites.append(load("res://Resources/Spriteframes/" + filePath))
 	
