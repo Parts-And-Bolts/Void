@@ -31,5 +31,4 @@ gizmo_extents = 8.0
 camera = NodePath("../Main-camera")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Room-Focus"]
-visible = false
 shape = SubResource("RectangleShape2D_j01cg")
