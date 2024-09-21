@@ -18,7 +18,8 @@ func _ready():
 		var gene = Rooms.pick_random().instantiate()
 		add_child(gene)
 		if LastRoom:
-			gene.get_node("room-template").get_node("Robot-0").queue_free()
+			if gene.get_node("room-template").find_child("Robot-0"):
+				gene.get_node("room-template").get_node("Robot-0").queue_free()
 			gene.global_position = LastRoom.get_node("room-template").get_node("End").global_position
 		
 		
