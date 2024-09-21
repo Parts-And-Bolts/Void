@@ -11,7 +11,13 @@ config_version=5
 [application]
 
 config/name="Void"
+run/main_scene="res://Scenes/Prefabs/room-template.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+
+[physics]
+
+common/physics_ticks_per_second=240
+common/max_physics_steps_per_frame=60
 
 [rendering]
 
