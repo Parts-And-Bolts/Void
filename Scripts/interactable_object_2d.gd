@@ -1,5 +1,5 @@
-class_name InteractableObject2D
-extends Area2D
+class_name InteractableDestroyObject2D
+extends InteractableObject2D
 
 @export_node_path("Node") var objectPath
 @export var action: String
