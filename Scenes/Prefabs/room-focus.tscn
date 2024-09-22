@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/room-focus.gd" id="1_vr3s1"]
 
 [node name="Room-Focus" type="Area2D"]
+monitorable = false
+priority = 15
 script = ExtResource("1_vr3s1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

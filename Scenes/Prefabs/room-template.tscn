@@ -27,8 +27,8 @@ position = Vector2(-171, 19)
 position = Vector2(232, -8)
 gizmo_extents = 8.0
 
-[node name="Room-Focus" parent="room-template" node_paths=PackedStringArray("camera") instance=ExtResource("4_1olcq")]
-camera = NodePath("../Main-camera")
+[node name="Room-Focus" parent="room-template" instance=ExtResource("4_1olcq")]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Room-Focus"]
 visible = false

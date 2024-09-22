@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2g5ace37s0rq"]
+
+[ext_resource type="Script" path="res://Scripts/interactable_object_2d.gd" id="1_qcval"]
+
+[node name="InteractableDestroyObject2D" type="Area2D"]
+monitorable = false
+script = ExtResource("1_qcval")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

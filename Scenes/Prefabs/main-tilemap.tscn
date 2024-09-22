@@ -234,6 +234,7 @@ texture = ExtResource("1_g6te1")
 10:13/0 = 0
 11:13/0 = 0
 10:2/0 = 0
+13:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_d3row"]
 physics_layer_0/collision_layer = 1

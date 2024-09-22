@@ -1,5 +1,8 @@
+class_name Player
 extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $Sprite
+
+var currentInteractable: InteractableObject2D
 
 var sprites: Array
 
@@ -23,6 +26,10 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
+	if currentInteractable:
+		if Input.is_action_just_pressed(currentInteractable.action):
+			currentInteractable.execute()
+	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
