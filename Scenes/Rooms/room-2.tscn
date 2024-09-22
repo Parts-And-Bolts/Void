@@ -26,14 +26,15 @@ position = Vector2(248, 88)
 cameraPath = NodePath("../Main-camera")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Room-Focus"]
+visible = false
 shape = SubResource("RectangleShape2D_j01cg")
 
-[node name="InteractableDestroyObject2D" parent="room-template" instance=ExtResource("5_1dbx3")]
+[node name="InteractableDestroyObject2D2" parent="room-template" instance=ExtResource("5_1dbx3")]
 position = Vector2(-56, 56)
 objectPath = NodePath("../Lasers1")
-action = "ui_accept"
+action = "interact"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/InteractableDestroyObject2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/InteractableDestroyObject2D2"]
 shape = SubResource("RectangleShape2D_jivqs")
 
 [node name="MapTileset" parent="room-template" instance=ExtResource("1_wtsio")]
