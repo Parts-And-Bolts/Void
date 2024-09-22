@@ -1,12 +1,6 @@
 class_name InteractableDestroyObject2D
 extends InteractableObject2D
 
-@export_node_path("Node") var objectPath
-@export var action: String
-
-var isInside = false
-var isPressed = false
-
 func execute():
 	
 	if isInside and not isPressed:
