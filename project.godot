@@ -14,6 +14,10 @@ config/name="Void"
 run/main_scene="res://Scenes/room_generation.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 
+[autoload]
+
+PlayerData="*res://Scripts/Autoload/PlayerData.gd"
+
 [physics]
 
 common/physics_ticks_per_second=240
