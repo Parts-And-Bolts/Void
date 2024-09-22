@@ -7,7 +7,7 @@ func execute():
 		var object = get_node(objectPath)
 		isPressed = true
 		
-		object.position = Vector2(-500,500)
+		object.queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
 	
@@ -21,5 +21,6 @@ func _on_body_exited(body: Node2D) -> void:
 	
 	if body is Player:
 		
-		body.currentInteractable = null
+		if body.currentInteractable == self:
+			body.currentInteractable = null
 		isInside = false

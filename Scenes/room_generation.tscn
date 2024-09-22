@@ -6,6 +6,7 @@
 
 [node name="Room-Generation" type="Node2D"]
 script = ExtResource("1_fced5")
+roomsToGenerate = 50
 
 [node name="0" parent="." instance=ExtResource("2_i7dru")]
 position = Vector2(-240, 96)
