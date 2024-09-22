@@ -238,8 +238,6 @@ texture = ExtResource("1_g6te1")
 [sub_resource type="TileSet" id="TileSet_d3row"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_2ygdl")
-custom_data_layer_0/name = "Interactable"
-custom_data_layer_0/type = 26
 sources/0 = SubResource("TileSetAtlasSource_1tb75")
 
 [node name="MapTileset" type="TileMapLayer"]
