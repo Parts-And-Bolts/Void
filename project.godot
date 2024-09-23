@@ -17,6 +17,11 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 [autoload]
 
 PlayerData="*res://Scripts/Autoload/PlayerData.gd"
+Crt="*res://Scripts/Autoload/crt.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/crt_shader/plugin.cfg")
 
 [input]
 
