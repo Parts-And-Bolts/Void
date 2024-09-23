@@ -6,5 +6,5 @@ func execute():
 		var object = get_node(objectPath)
 		isPressed = true
 		animated_sprite_2d.play("default")
-		await animated_sprite_2d.animation_finished
+		await animated_sprite_2d.frame_changed
 		object.queue_free()

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://addons/crt_shader/crt_screen.gd" id="2_w5k8q"]
 
 [node name="CRT" type="CanvasLayer"]
+layer = 7
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -8,7 +8,9 @@ var isInside = false
 var isPressed = false
 
 func execute():
-	pass
+	if isInside and not isPressed:
+		var object: AnimationPlayer = get_node(objectPath)
+		object.play("main")
 
 func _on_body_entered(body: Node2D) -> void:
 	
