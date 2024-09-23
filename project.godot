@@ -19,6 +19,11 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 PlayerData="*res://Scripts/Autoload/PlayerData.gd"
 Crt="*res://Scripts/Autoload/crt.tscn"
 
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/crt_shader/plugin.cfg")
