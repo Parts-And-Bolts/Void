@@ -26,7 +26,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	PlayerData.canJump = (get_gravity() != Vector2(0,0))
 	
-	if not PlayerData.isRecharging:
+	if not PlayerData.isRecharging and PlayerData.canControl:
 		# Handle jump.
 		if currentInteractable:
 			if Input.is_action_just_pressed(currentInteractable.action):
@@ -51,5 +51,6 @@ func _physics_process(delta: float) -> void:
 		else:
 			sprite.play("idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	
+	else:
+		sprite.play("idle")
 	move_and_slide()

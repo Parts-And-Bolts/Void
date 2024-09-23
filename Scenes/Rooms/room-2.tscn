@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://bl61pqcgtyyq7"]
+[gd_scene load_steps=9 format=4 uid="uid://bl61pqcgtyyq7"]
 
 [ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_wtsio"]
 [ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_v036y"]
 [ext_resource type="PackedScene" uid="uid://b4odq4ontnh5x" path="res://Scenes/Prefabs/robot.tscn" id="3_4a1pe"]
+[ext_resource type="PackedScene" uid="uid://b28v20g1pkrtm" path="res://Scenes/Prefabs/push.tscn" id="3_6yerj"]
 [ext_resource type="PackedScene" uid="uid://cb436smfyw8pw" path="res://Scenes/Prefabs/room-focus.tscn" id="4_kjj6y"]
 [ext_resource type="PackedScene" uid="uid://e20y4m02qtse" path="res://Scenes/Prefabs/lever_orange.tscn" id="5_a8u4c"]
 
@@ -35,10 +36,9 @@ tile_map_data = PackedByteArray("AAAGAAMAAAADAAoAAAAGAAQAAAADAAoAAAAAAAYAAAAKAAs
 [node name="Lasers1" parent="room-template" instance=ExtResource("1_wtsio")]
 tile_map_data = PackedByteArray("AAAAAAMAAAAAAAgAAAAAAAIAAAABAAgAAAAAAAEAAAACAAgAAAA=")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="room-template/Lasers1"]
-position = Vector2(8, 40)
+[node name="Push" parent="room-template/Lasers1" instance=ExtResource("3_6yerj")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Lasers1/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Lasers1/Push"]
 shape = SubResource("RectangleShape2D_k40m2")
 
 [node name="Main-camera" parent="room-template" instance=ExtResource("2_v036y")]
