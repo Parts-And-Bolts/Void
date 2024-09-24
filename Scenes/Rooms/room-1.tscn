@@ -90,3 +90,4 @@ amount = 100
 process_material = SubResource("ParticleProcessMaterial_mr426")
 texture = ExtResource("5_4oru5")
 lifetime = 10.0
+preprocess = 10.0

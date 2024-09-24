@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=4 uid="uid://bej1xo7ojnmm2"]
+
+[ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_kw4r8"]
+[ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_4r133"]
+[ext_resource type="PackedScene" uid="uid://b4odq4ontnh5x" path="res://Scenes/Prefabs/robot.tscn" id="3_7opu2"]
+[ext_resource type="PackedScene" uid="uid://cb436smfyw8pw" path="res://Scenes/Prefabs/room-focus.tscn" id="4_xos4s"]
+[ext_resource type="PackedScene" uid="uid://de64thprmyyng" path="res://Scenes/Prefabs/lever_blue_animateable.tscn" id="5_12bp5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j01cg"]
+size = Vector2(240, 48)
+
+[sub_resource type="Animation" id="Animation_tbklx"]
+resource_name = "default"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(3.24901, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_wwifd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_drl3b"]
+_data = {
+"RESET": SubResource("Animation_wwifd"),
+"default": SubResource("Animation_tbklx")
+}
+
+[node name="Start" type="Marker2D"]
+position = Vector2(-248, 104)
+gizmo_extents = 8.0
+
+[node name="room-template" type="Node2D" parent="."]
+position = Vector2(264, -104)
+
+[node name="Background" parent="room-template" instance=ExtResource("1_kw4r8")]
+modulate = Color(0.685835, 0.685835, 0.685835, 1)
+tile_map_data = PackedByteArray("AADw/wAAAAABAAIAAADw/wIAAAAEAAEAAADw/wMAAAABAAIAAADw/wQAAAAEAAIAAADw/wUAAAABAAIAAADw/wYAAAABAAIAAADw/wcAAAABAAIAAADw/wgAAAADAAEAAADx/wAAAAABAAIAAADx/wEAAAABAAIAAADx/wIAAAABAAIAAADx/wMAAAABAAIAAADx/wQAAAABAAIAAADx/wUAAAABAAIAAADx/wYAAAABAAIAAADx/wcAAAABAAIAAADx/wgAAAABAAIAAADy/wAAAAAEAAEAAADy/wEAAAAHAAUAAADy/wIAAAABAAIAAADy/wMAAAABAAIAAADy/wQAAAABAAIAAADy/wUAAAABAAIAAADy/wYAAAABAAIAAADy/wcAAAABAAIAAADy/wgAAAABAAIAAADz/wAAAAABAAIAAADz/wEAAAAIAAUAAADz/wIAAAABAAIAAADz/wMAAAABAAIAAADz/wQAAAAEAAIAAADz/wUAAAABAAIAAADz/wYAAAAEAAIAAADz/wcAAAABAAIAAADz/wgAAAABAAIAAAD0/wAAAAABAAIAAAD0/wEAAAABAAIAAAD0/wIAAAABAAIAAAD0/wMAAAABAAIAAAD0/wQAAAABAAIAAAD0/wUAAAABAAIAAAD0/wYAAAABAAIAAAD0/wcAAAABAAIAAAD0/wgAAAABAAIAAAD1/wAAAAABAAIAAAD1/wEAAAAFAAcAAAD1/wIAAAABAAIAAAD1/wMAAAABAAIAAAD1/wQAAAABAAIAAAD1/wUAAAABAAIAAAD1/wYAAAABAAIAAAD1/wcAAAABAAIAAAD1/wgAAAAEAAEAAAD2/wAAAAABAAIAAAD2/wEAAAAGAAcAAAD2/wIAAAAEAAEAAAD2/wMAAAABAAIAAAD2/wQAAAABAAIAAAD2/wUAAAABAAIAAAD2/wYAAAABAAIAAAD2/wcAAAABAAIAAAD2/wgAAAABAAIAAAD3/wAAAAABAAIAAAD3/wEAAAABAAIAAAD3/wIAAAABAAIAAAD3/wMAAAABAAIAAAD3/wQAAAABAAIAAAD3/wUAAAAEAAIAAAD3/wYAAAABAAIAAAD3/wcAAAABAAIAAAD3/wgAAAABAAIAAAD4/wAAAAABAAIAAAD4/wEAAAAHAAUAAAD4/wIAAAABAAIAAAD4/wMAAAABAAIAAAD4/wQAAAABAAIAAAD4/wUAAAABAAIAAAD4/wYAAAABAAIAAAD4/wcAAAABAAIAAAD4/wgAAAABAAIAAAD5/wAAAAABAAIAAAD5/wEAAAAIAAUAAAD5/wIAAAABAAIAAAD5/wMAAAABAAIAAAD5/wQAAAAEAAIAAAD5/wUAAAABAAIAAAD5/wYAAAABAAIAAAD5/wcAAAABAAIAAAD5/wgAAAAEAAIAAAD6/wAAAAABAAIAAAD6/wEAAAABAAIAAAD6/wIAAAABAAIAAAD6/wMAAAABAAIAAAD6/wQAAAABAAIAAAD6/wUAAAABAAIAAAD6/wYAAAAEAAIAAAD6/wcAAAABAAIAAAD6/wgAAAABAAIAAAD7/wAAAAAEAAEAAAD7/wEAAAAFAAcAAAD7/wIAAAABAAIAAAD7/wMAAAABAAIAAAD7/wQAAAABAAIAAAD7/wUAAAABAAIAAAD7/wYAAAABAAIAAAD7/wcAAAABAAIAAAD7/wgAAAABAAIAAAD8/wAAAAABAAIAAAD8/wEAAAAGAAcAAAD8/wIAAAABAAIAAAD8/wMAAAAGAAEAAAD8/wQAAAAGAAIAAAD8/wUAAAAGAAIAAAD8/wYAAAAGAAMAAAD8/wcAAAABAAIAAAD8/wgAAAABAAIAAAD9/wAAAAABAAIAAAD9/wEAAAABAAIAAAD9/wIAAAABAAIAAAD9/wMAAAABAAIAAAD9/wQAAAABAAIAAAD9/wUAAAABAAIAAAD9/wYAAAAJAAYAAAD9/wcAAAABAAIAAAD9/wgAAAABAAIAAAD+/wAAAAABAAIAAAD+/wEAAAAIAAUAAAD+/wIAAAAGAAUAAAD+/wMAAAABAAIAAAD+/wQAAAABAAIAAAD+/wUAAAABAAIAAAD+/wYAAAABAAIAAAD+/wcAAAABAAIAAAD+/wgAAAAEAAEAAADw/wEAAAAFAAcAAAA=")
+collision_enabled = false
+
+[node name="MapTileset" parent="room-template" instance=ExtResource("1_kw4r8")]
+tile_map_data = PackedByteArray("AADw/wcAAAADAAMAAADx/wcAAAAEAAMAAADy/wcAAAAEAAMAAADz/wcAAAAEAAMAAAD0/wcAAAAEAAMAAAD1/wcAAAAEAAMAAAD+/wcAAAAFAAMAAAD2/wcAAAAEAAMAAAD3/wcAAAAEAAMAAAD4/wcAAAAEAAMAAAD5/wcAAAAEAAMAAAD6/wcAAAAEAAMAAAD7/wcAAAAEAAMAAAD8/wcAAAAEAAMAAAD9/wcAAAAEAAMAAADx/wgAAAAGAAMAAAD0/wgAAAAGAAMAAAD3/wgAAAAGAAMAAAD6/wgAAAAGAAMAAAD9/wgAAAAGAAMAAADw/wMAAAADAAMAAAD+/wMAAAAFAAMAAADx/wMAAAAEAAMAAADy/wMAAAAEAAMAAADz/wMAAAAEAAMAAAD0/wMAAAAEAAMAAAD1/wMAAAAEAAMAAAD2/wMAAAAEAAMAAAD3/wMAAAAEAAMAAAD4/wMAAAAEAAMAAAD5/wMAAAAEAAMAAAD6/wMAAAAEAAMAAAD7/wMAAAAEAAMAAADx/wAAAAAGAAEAAAD0/wAAAAAGAAEAAAD3/wAAAAAGAAEAAAD6/wAAAAAGAAEAAAD9/wAAAAAGAAEAAAD9/wMAAAAEAAMAAADx/wEAAAAGAAIAAADx/wIAAAAGAAIAAAD0/wEAAAAGAAIAAAD0/wIAAAAGAAIAAAD3/wEAAAAGAAIAAAD3/wIAAAAGAAIAAAD6/wEAAAAGAAIAAAD6/wIAAAAGAAIAAAD9/wEAAAAGAAIAAAD9/wIAAAAGAAIAAAD4/wQAAAAFAA0AAAD4/wUAAAAFAA0AAAD4/wYAAAAFAA0AAAD7/wQAAAAFAA0AAAD7/wUAAAAFAA0AAAD7/wYAAAAFAA0AAAD1/wQAAAAFAA0AAAD1/wUAAAAFAA0AAAD1/wYAAAAFAA0AAADy/wQAAAAFAA0AAADy/wUAAAAFAA0AAADy/wYAAAAFAA0AAAD+/wQAAAAFAA0AAAD+/wUAAAAFAA0AAAD+/wYAAAAFAA0AAAD2/wQAAAAAAAoAAAD3/wQAAAABAAoAAAD6/wQAAAADAAoAAADy/wgAAAAAAAoAAADz/wgAAAABAAoAAAD7/wgAAAAJAAEAAAD2/wgAAAAJAAAAAAA=")
+
+[node name="Door" parent="room-template" instance=ExtResource("1_kw4r8")]
+tile_map_data = PackedByteArray("AAD8/wUAAAAHAAYAAAD8/wMAAAADAAQAAAD8/wYAAAADAAUAAAD8/wQAAAAHAAYAAAA=")
+
+[node name="Main-camera" parent="room-template" instance=ExtResource("2_4r133")]
+position = Vector2(-136, 72)
+zoom = Vector2(5, 5)
+
+[node name="Robot-0" parent="room-template" instance=ExtResource("3_7opu2")]
+position = Vector2(-232, 112)
+
+[node name="End" type="Marker2D" parent="room-template"]
+position = Vector2(-24, 104)
+gizmo_extents = 8.0
+
+[node name="Room-Focus" parent="room-template" instance=ExtResource("4_xos4s")]
+cameraPath = NodePath("../Main-camera")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Room-Focus"]
+visible = false
+position = Vector2(-136, 88)
+shape = SubResource("RectangleShape2D_j01cg")
+
+[node name="lever-blue-animateable" parent="room-template" instance=ExtResource("5_12bp5")]
+position = Vector2(-168, 104)
+objectPath = NodePath("../AnimationPlayer")
+action = "interact"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="room-template"]
+libraries = {
+"": SubResource("AnimationLibrary_drl3b")
+}

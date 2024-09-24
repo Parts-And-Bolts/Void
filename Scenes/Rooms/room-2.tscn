@@ -24,7 +24,6 @@ position = Vector2(248, 88)
 cameraPath = NodePath("../Main-camera")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Room-Focus"]
-visible = false
 shape = SubResource("RectangleShape2D_j01cg")
 
 [node name="Middle" parent="room-template" instance=ExtResource("1_wtsio")]
