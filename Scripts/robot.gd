@@ -59,3 +59,17 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.play("idle")
 	move_and_slide()
+
+
+func _on_drainage_timer_timeout() -> void:
+	if PlayerData.isRecharging == false and PlayerData.canControl:
+		PlayerData.batteryLevel -= 1
+		if PlayerData.batteryLevel == 0:
+			PlayerData.isRecharging = true
+
+
+func _on_recharge_timer_timeout() -> void:
+	if PlayerData.isRecharging == true and PlayerData.canControl:
+		PlayerData.batteryLevel += 1
+		if PlayerData.batteryLevel == 100:
+			PlayerData.isRecharging = false

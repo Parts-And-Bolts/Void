@@ -21,3 +21,14 @@ shape = SubResource("CapsuleShape2D_p30ap")
 position = Vector2(-2, -16)
 sprite_frames = ExtResource("1_sti4o")
 animation = &"idle"
+
+[node name="RechargeTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="DrainageTimer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[connection signal="timeout" from="RechargeTimer" to="." method="_on_recharge_timer_timeout"]
+[connection signal="timeout" from="DrainageTimer" to="." method="_on_drainage_timer_timeout"]
