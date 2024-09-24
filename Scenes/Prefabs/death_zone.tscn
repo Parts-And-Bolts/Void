@@ -2,12 +2,16 @@
 
 [sub_resource type="GDScript" id="GDScript_0f6n8"]
 resource_name = "death-script"
-script/source = "extends Area2D
+script/source = "class_name DeathZone
+extends Area2D
 
+@export_node_path(\"Node2D\") var RespawnPoint
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.death()
+		var pos = get_node(RespawnPoint)
+		await get_tree().create_timer(1).timeout
+		body.global_position = pos.global_position
 "
 
 [node name="DeathZone" type="Area2D"]
