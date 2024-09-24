@@ -79,7 +79,7 @@ zoom = Vector2(4, 4)
 position = Vector2(-136, 16)
 
 [node name="End" type="Marker2D" parent="room-template"]
-position = Vector2(232, -8)
+position = Vector2(136, 8)
 gizmo_extents = 8.0
 
 [node name="Room-Focus" parent="room-template" instance=ExtResource("4_xos4s")]
