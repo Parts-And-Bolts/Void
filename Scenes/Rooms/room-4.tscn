@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=4 uid="uid://bt2m7ti25msdb"]
+
+[ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_kw4r8"]
+[ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_4r133"]
+[ext_resource type="PackedScene" uid="uid://b4odq4ontnh5x" path="res://Scenes/Prefabs/robot.tscn" id="3_7opu2"]
+[ext_resource type="PackedScene" uid="uid://cb436smfyw8pw" path="res://Scenes/Prefabs/room-focus.tscn" id="4_xos4s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j01cg"]
+size = Vector2(288, 176)
+
+[sub_resource type="Animation" id="Animation_xn8ef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_grxja"]
+resource_name = "default"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -48), Vector2(176, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0ysr"]
+_data = {
+"RESET": SubResource("Animation_xn8ef"),
+"default": SubResource("Animation_grxja")
+}
+
+[node name="Start" type="Marker2D"]
+position = Vector2(-248, 104)
+gizmo_extents = 8.0
+
+[node name="room-template" type="Node2D" parent="."]
+position = Vector2(152, -8)
+
+[node name="MapTileset" parent="room-template" instance=ExtResource("1_kw4r8")]
+position = Vector2(0, -48)
+tile_map_data = PackedByteArray("AAD4/wQAAAAFAAMAAAD3/wQAAAADAAMAAAAIAAQAAAAFAAMAAAAHAAQAAAADAAMAAAD4/wUAAAAGAAIAAAD4/wYAAAAGAAIAAAD4/wcAAAAGAAIAAAD4/wgAAAAGAAIAAAD4/wkAAAAGAAIAAAD4/woAAAAGAAIAAAD4/wsAAAAAAAMAAAAHAAUAAAAGAAIAAAAHAAYAAAAGAAIAAAAHAAcAAAAGAAIAAAAHAAgAAAAGAAIAAAAHAAkAAAAGAAIAAAAHAAoAAAAGAAIAAAAHAAsAAAACAAMAAAD5/wsAAAAEAAMAAAD6/wsAAAAEAAMAAAD7/wsAAAAEAAMAAAD8/wsAAAAEAAMAAAD9/wsAAAAEAAMAAAD+/wsAAAAEAAMAAAD//wsAAAAEAAMAAAAAAAsAAAAEAAMAAAABAAsAAAAEAAMAAAACAAsAAAAEAAMAAAADAAsAAAAEAAMAAAAEAAsAAAAEAAMAAAAFAAsAAAAEAAMAAAAGAAsAAAAEAAMAAAD3/wEAAAAGAAMAAAAIAAEAAAAGAAMAAAD3/wAAAAAGAAIAAAD3////AAAGAAIAAAAIAAAAAAAGAAIAAAAIAP//AAAGAAIAAAD4//7/AAAEAAMAAAD///7/AAAEAAMAAAAAAP7/AAAEAAMAAAABAP7/AAAEAAMAAAACAP7/AAAEAAMAAAADAP7/AAAEAAMAAAAEAP7/AAAEAAMAAAAFAP7/AAAEAAMAAAAGAP7/AAAEAAMAAAAHAP7/AAAEAAMAAAD+//7/AAAEAAMAAAD9//7/AAAEAAMAAAD8//7/AAAEAAMAAAD7//7/AAAEAAMAAAD6//7/AAAEAAMAAAD5//7/AAAEAAMAAAD3//7/AAAAAAEAAAAIAP7/AAACAAEAAAA=")
+
+[node name="Platform" parent="room-template" instance=ExtResource("1_kw4r8")]
+position = Vector2(0, -48)
+tile_map_data = PackedByteArray("AAD6/wQAAAAEAAMAAAD7/wQAAAAFAAMAAAD5/wQAAAADAAMAAAA=")
+
+[node name="Main-camera" parent="room-template" instance=ExtResource("2_4r133")]
+zoom = Vector2(4, 4)
+
+[node name="Robot-0" parent="room-template" instance=ExtResource("3_7opu2")]
+position = Vector2(-136, 16)
+
+[node name="End" type="Marker2D" parent="room-template"]
+position = Vector2(232, -8)
+gizmo_extents = 8.0
+
+[node name="Room-Focus" parent="room-template" instance=ExtResource("4_xos4s")]
+cameraPath = NodePath("../Main-camera")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Room-Focus"]
+visible = false
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_j01cg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="room-template"]
+libraries = {
+"": SubResource("AnimationLibrary_y0ysr")
+}
+autoplay = "default"

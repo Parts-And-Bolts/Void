@@ -4,10 +4,18 @@ extends CharacterBody2D
 
 var currentInteractable: InteractableObject2D
 
+
+
 var sprites: Array
 
 const SPEED = 100
 const JUMP_VELOCITY = -250.0
+
+func death():
+	
+	await get_tree().create_timer(1).timeout
+	get_tree().reload_current_scene()
+	
 
 func _ready():
 	
