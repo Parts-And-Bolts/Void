@@ -10,7 +10,9 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		var pos = get_node(RespawnPoint)
+		PlayerData.canControl = false
 		await get_tree().create_timer(1).timeout
+		PlayerData.canControl = true
 		body.global_position = pos.global_position
 "
 
