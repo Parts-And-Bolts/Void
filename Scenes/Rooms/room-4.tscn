@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://bt2m7ti25msdb"]
+[gd_scene load_steps=11 format=4 uid="uid://bt2m7ti25msdb"]
 
 [ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_kw4r8"]
 [ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_4r133"]
 [ext_resource type="PackedScene" uid="uid://b4odq4ontnh5x" path="res://Scenes/Prefabs/robot.tscn" id="3_7opu2"]
 [ext_resource type="PackedScene" uid="uid://cb436smfyw8pw" path="res://Scenes/Prefabs/room-focus.tscn" id="4_xos4s"]
+[ext_resource type="PackedScene" uid="uid://biide6dkuaklu" path="res://Scenes/Prefabs/death_zone.tscn" id="5_jajg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j01cg"]
 size = Vector2(288, 176)
@@ -46,6 +47,9 @@ _data = {
 "default": SubResource("Animation_grxja")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syffn"]
+size = Vector2(224, 20)
+
 [node name="Start" type="Marker2D"]
 position = Vector2(-248, 104)
 gizmo_extents = 8.0
@@ -60,6 +64,7 @@ tile_map_data = PackedByteArray("AAD4/wQAAAAFAAMAAAD3/wQAAAADAAMAAAAIAAQAAAAFAAM
 [node name="Platform" parent="room-template" instance=ExtResource("1_kw4r8")]
 position = Vector2(0, -48)
 tile_map_data = PackedByteArray("AAD6/wQAAAAEAAMAAAD7/wQAAAAFAAMAAAD5/wQAAAADAAMAAAA=")
+use_kinematic_bodies = true
 
 [node name="Main-camera" parent="room-template" instance=ExtResource("2_4r133")]
 zoom = Vector2(4, 4)
@@ -84,3 +89,10 @@ libraries = {
 "": SubResource("AnimationLibrary_y0ysr")
 }
 autoplay = "default"
+
+[node name="DeathZone" parent="room-template" instance=ExtResource("5_jajg6")]
+position = Vector2(-88, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/DeathZone"]
+position = Vector2(88, 8)
+shape = SubResource("RectangleShape2D_syffn")
