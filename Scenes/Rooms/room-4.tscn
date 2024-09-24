@@ -74,6 +74,7 @@ tile_map_data = PackedByteArray("AAD4/wQAAAAFAAMAAAD3/wQAAAADAAMAAAAIAAQAAAAFAAM
 
 [node name="Main-camera" parent="room-template" instance=ExtResource("2_4r133")]
 zoom = Vector2(4, 4)
+process_callback = 0
 
 [node name="Robot-0" parent="room-template" instance=ExtResource("3_7opu2")]
 position = Vector2(-136, 16)
