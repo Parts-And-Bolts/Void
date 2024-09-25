@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	PlayerData.canJump = (get_gravity() != Vector2(0,0))
 	
-	if not PlayerData.isRecharging and PlayerData.canControl:
+	if not PlayerData.isRecharging and PlayerData.canControl and PlayerData.gameStarted:
 		# Handle jump.
 		if currentInteractable:
 			if Input.is_action_just_pressed(currentInteractable.action):
@@ -79,5 +79,5 @@ func _on_normal_timer_timeout() -> void:
 	if PlayerData.gameStarted:
 		PlayerData.timeLeft -= 1
 		if PlayerData.timeLeft == -1:
-			PlayerData.timeLeft = 120
+			PlayerData.setDefaults()
 			get_tree().reload_current_scene()
