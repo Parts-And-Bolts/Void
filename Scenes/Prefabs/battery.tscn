@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://kxr83tur5rx4"]
+
+[ext_resource type="Script" path="res://Scripts/battery.gd" id="1_30spe"]
+[ext_resource type="Texture2D" uid="uid://bh2irw0uwwsjl" path="res://Assets/Sprites/battery.png" id="1_i7ws0"]
+[ext_resource type="Shader" path="res://Scripts/collectible.gdshader" id="2_xqrya"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3sqx"]
+shader = ExtResource("2_xqrya")
+shader_parameter/size_effect = 0.3
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = true
+shader_parameter/is_horizontal = true
+shader_parameter/pause_duration = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xu5ms"]
+radius = 3.53553
+height = 15.5563
+
+[sub_resource type="Animation" id="Animation_u0kw8"]
+resource_name = "auto"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 2), Vector2(1.5, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_j4b3q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, -1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mwg46"]
+_data = {
+"RESET": SubResource("Animation_j4b3q"),
+"auto": SubResource("Animation_u0kw8")
+}
+
+[node name="Battery" type="Area2D"]
+monitorable = false
+priority = 20
+script = ExtResource("1_30spe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_p3sqx")
+position = Vector2(1.5, -1.5)
+rotation = 0.785398
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_i7ws0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, -1)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_xu5ms")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mwg46")
+}
+autoplay = "auto"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

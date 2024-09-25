@@ -35,5 +35,9 @@ autostart = true
 wait_time = 0.7
 autostart = true
 
+[node name="NormalTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="RechargeTimer" to="." method="_on_recharge_timer_timeout"]
 [connection signal="timeout" from="DrainageTimer" to="." method="_on_drainage_timer_timeout"]
+[connection signal="timeout" from="NormalTimer" to="." method="_on_normal_timer_timeout"]

@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_drainage_timer_timeout() -> void:
-	if PlayerData.isRecharging == false and PlayerData.canControl:
+	if PlayerData.isRecharging == false and PlayerData.canControl and PlayerData.gameStarted:
 		PlayerData.batteryLevel -= 1
 		if PlayerData.batteryLevel == 0:
 			PlayerData.isRecharging = true
@@ -73,3 +73,11 @@ func _on_recharge_timer_timeout() -> void:
 		PlayerData.batteryLevel += 1
 		if PlayerData.batteryLevel == 100:
 			PlayerData.isRecharging = false
+
+
+func _on_normal_timer_timeout() -> void:
+	if PlayerData.gameStarted:
+		PlayerData.timeLeft -= 1
+		if PlayerData.timeLeft == -1:
+			PlayerData.timeLeft = 120
+			get_tree().reload_current_scene()

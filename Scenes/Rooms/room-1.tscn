@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://bhct5u11jemih"]
+[gd_scene load_steps=12 format=4 uid="uid://bhct5u11jemih"]
 
 [ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_3aqxq"]
 [ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_85mf2"]
 [ext_resource type="PackedScene" uid="uid://b4odq4ontnh5x" path="res://Scenes/Prefabs/robot.tscn" id="3_yctam"]
 [ext_resource type="PackedScene" uid="uid://cb436smfyw8pw" path="res://Scenes/Prefabs/room-focus.tscn" id="4_1olcq"]
 [ext_resource type="Texture2D" uid="uid://uwpktlpjik3w" path="res://Assets/Sprites/star.png" id="5_4oru5"]
+[ext_resource type="PackedScene" uid="uid://kxr83tur5rx4" path="res://Scenes/Prefabs/battery.tscn" id="5_g4fja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j01cg"]
 size = Vector2(480, 224)
@@ -64,6 +65,12 @@ cameraPath = NodePath("../Main-camera")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Room-Focus"]
 visible = false
 shape = SubResource("RectangleShape2D_j01cg")
+
+[node name="Battery" parent="room-template/Room-Focus" instance=ExtResource("5_g4fja")]
+position = Vector2(-216, -72)
+
+[node name="Battery2" parent="room-template/Room-Focus" instance=ExtResource("5_g4fja")]
+position = Vector2(216, 88)
 
 [node name="Area2D" type="Area2D" parent="room-template"]
 position = Vector2(128, 0)
