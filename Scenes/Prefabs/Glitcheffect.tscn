@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct4tddbndn61a"]
+
+[ext_resource type="Shader" path="res://Scripts/+30.gdshader" id="1_ure3u"]
+[ext_resource type="Script" path="res://Scripts/e_xplusion.gd" id="2_bm60r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngjmx"]
+resource_local_to_scene = true
+shader = ExtResource("1_ure3u")
+shader_parameter/shake_power = 0.05
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 3.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="Animation" id="Animation_xiiif"]
+resource_name = "default"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EXplusion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_3juu1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EXplusion:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ecc44"]
+_data = {
+"RESET": SubResource("Animation_3juu1"),
+"default": SubResource("Animation_xiiif")
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 6
+
+[node name="EXplusion" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_ngjmx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_bm60r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ecc44")
+}

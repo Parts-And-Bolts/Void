@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bt2m7ti25msdb"]
+[gd_scene load_steps=13 format=4 uid="uid://bt2m7ti25msdb"]
 
 [ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_kw4r8"]
 [ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_4r133"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cb436smfyw8pw" path="res://Scenes/Prefabs/room-focus.tscn" id="4_xos4s"]
 [ext_resource type="PackedScene" uid="uid://biide6dkuaklu" path="res://Scenes/Prefabs/death_zone.tscn" id="5_jajg6"]
 [ext_resource type="PackedScene" uid="uid://kxr83tur5rx4" path="res://Scenes/Prefabs/battery.tscn" id="6_ix2dn"]
+[ext_resource type="PackedScene" uid="uid://nxiclba5ga1i" path="res://Scenes/Prefabs/+30.tscn" id="7_dcuww"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j01cg"]
 size = Vector2(288, 176)
@@ -111,3 +112,6 @@ position = Vector2(-120, 16)
 
 [node name="Battery" parent="room-template" instance=ExtResource("6_ix2dn")]
 position = Vector2(-8, -40)
+
+[node name="+30" parent="." instance=ExtResource("7_dcuww")]
+position = Vector2(256, -56)

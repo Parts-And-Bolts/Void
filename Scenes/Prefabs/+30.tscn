@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://nxiclba5ga1i"]
+
+[ext_resource type="Script" path="res://Scripts/+30.gd" id="1_o7yde"]
+[ext_resource type="Texture2D" uid="uid://b4qb7etxk1x8m" path="res://Assets/Sprites/30sec.png" id="2_3d2p2"]
+[ext_resource type="Shader" path="res://Scripts/+30.gdshader" id="4_luw2c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7v635"]
+radius = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_alaoy"]
+shader = ExtResource("4_luw2c")
+shader_parameter/shake_power = 0.05
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 3.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[node name="+30" type="Area2D"]
+collision_priority = 0.0
+monitorable = false
+priority = 25
+script = ExtResource("1_o7yde")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_3d2p2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7v635")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_alaoy")
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 32.0
+scale = Vector2(0.4, 0.4)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

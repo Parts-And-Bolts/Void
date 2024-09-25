@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 
 PlayerData="*res://Scripts/Autoload/PlayerData.gd"
 Crt="*res://Scripts/Autoload/crt.tscn"
+Glitcheffect="*res://Scenes/Prefabs/Glitcheffect.tscn"
 
 [display]
 
