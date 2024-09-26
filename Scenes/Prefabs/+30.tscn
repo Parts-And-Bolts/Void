@@ -8,6 +8,7 @@
 radius = 8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_alaoy"]
+resource_local_to_scene = true
 shader = ExtResource("4_luw2c")
 shader_parameter/shake_power = 0.05
 shader_parameter/shake_rate = 0.5
