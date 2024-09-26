@@ -103,5 +103,4 @@ position = Vector2(440, -120)
 position = Vector2(392, -72)
 
 [node name="+31" parent="." instance=ExtResource("7_tty05")]
-position = Vector2(177, -180)
-metadata/_edit_group_ = true
+position = Vector2(264, -216)
