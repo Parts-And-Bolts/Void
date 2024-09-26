@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbt802y2ybn4w"]
+
+[ext_resource type="FontFile" uid="uid://kneb8fxrbq0j" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_ak3im"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+visible = false
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.999342, 0, 0.0616105, 1)
+theme_override_colors/font_shadow_color = Color(0.525219, 0, 0.0526692, 1)
+theme_override_colors/font_outline_color = Color(0.793342, 0, 0.0629436, 1)
+theme_override_fonts/font = ExtResource("1_ak3im")
+theme_override_font_sizes/font_size = 64
+text = "--STUNNED--"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.327209, 0.0803662, 0.101814, 0.356863)

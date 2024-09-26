@@ -71,7 +71,9 @@ func _on_drainage_timer_timeout() -> void:
 func _on_recharge_timer_timeout() -> void:
 	if PlayerData.isRecharging == true and PlayerData.canControl:
 		PlayerData.batteryLevel += 1
+		recharging.visible = true
 		if PlayerData.batteryLevel == 100:
+			recharging.visible = false
 			PlayerData.isRecharging = false
 
 

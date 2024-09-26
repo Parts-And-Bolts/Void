@@ -28,7 +28,7 @@ sprite_frames = ExtResource("1_sti4o")
 animation = &"idle"
 
 [node name="RechargeTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.2
 autostart = true
 
 [node name="DrainageTimer" type="Timer" parent="."]
