@@ -56,6 +56,7 @@ bus = &"SFX"
 
 [node name="BatteryCollect" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("6_diu4y")
+volume_db = 8.0
 bus = &"SFX"
 
 [node name="Fall" type="AudioStreamPlayer2D" parent="Sounds"]
