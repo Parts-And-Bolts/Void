@@ -12,7 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var pos = get_node(RespawnPoint)
 		PlayerData.canControl = false
 		Stunned.visible = true
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(3).timeout
 		Stunned.visible = false
 		PlayerData.canControl = true
 		body.global_position = pos.global_position

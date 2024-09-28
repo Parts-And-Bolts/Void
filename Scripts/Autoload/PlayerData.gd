@@ -16,3 +16,6 @@ func setDefaults():
 	timeLeft = 120
 
 	gameStarted = true
+	OutOfTime.visible = false
+	Stunned.visible = false
+	recharging.visible = false

@@ -21,6 +21,7 @@ Crt="*res://Scripts/Autoload/crt.tscn"
 Glitcheffect="*res://Scenes/Prefabs/Glitcheffect.tscn"
 recharging="*res://Scripts/Autoload/recharging,tscn.tscn"
 Stunned="*res://Scripts/Autoload/stunned.tscn"
+OutOfTime="*res://Scripts/Autoload/out-of-time.tscn"
 
 [display]
 

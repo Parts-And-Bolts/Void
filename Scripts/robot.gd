@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var currentInteractable: InteractableObject2D
 
+@onready var sounds: Node = $Sounds
 
 
 var sprites: Array
@@ -24,11 +25,16 @@ func _ready():
 	sprite.sprite_frames = sprites.pick_random()
 	sprite.play("idle")
 	
-
+var out = false
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
+		out = true
 		velocity += get_gravity() * delta
+	else:
+		if out == true:
+			out = false
+			$Sounds/Fall.play()
 	PlayerData.canJump = (get_gravity() != Vector2(0,0))
 	
 	if not PlayerData.isRecharging and PlayerData.canControl and PlayerData.gameStarted:
@@ -38,6 +44,7 @@ func _physics_process(delta: float) -> void:
 				currentInteractable.execute()
 		
 		if Input.is_action_pressed("jump") and is_on_floor() and PlayerData.canJump:
+			$Sounds/Jump.play()
 			velocity.y = JUMP_VELOCITY
 
 		# Get the input direction and handle the movement/deceleration.
@@ -49,14 +56,24 @@ func _physics_process(delta: float) -> void:
 				sprite.flip_h = true
 			else:
 				sprite.flip_h = false
-			
+			if not $Sounds/Walk.playing and is_on_floor():
+				$Sounds/Walk.play()
+				if not is_on_floor():
+					if $Sounds/Walk.playing:
+						$Sounds/Walk.stop()
 			if sprite.animation == "idle":
+				
 				sprite.play("walk")
 			velocity.x = direction * SPEED
 		else:
 			sprite.play("idle")
+			if $Sounds/Walk.playing:
+				$Sounds/Walk.stop()
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	else:
+		if $Sounds/Walk.playing:
+			$Sounds/Walk.stop()
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		sprite.play("idle")
 	move_and_slide()
 
@@ -81,5 +98,9 @@ func _on_normal_timer_timeout() -> void:
 	if PlayerData.gameStarted:
 		PlayerData.timeLeft -= 1
 		if PlayerData.timeLeft == -1:
+			OutOfTime.visible = true
+			PlayerData.canControl = false
+			OutOfTime.get_node("Control/ran-out").play()
+			await get_tree().create_timer(4).timeout
 			PlayerData.setDefaults()
 			get_tree().reload_current_scene()

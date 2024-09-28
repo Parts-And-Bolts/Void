@@ -7,6 +7,7 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
+		body.get_node("Sounds/TimerCollect").play()
 		PlayerData.timeLeft += 30
 		Glitcheffect.get_node("EXplusion").set_shock()
 		queue_free()

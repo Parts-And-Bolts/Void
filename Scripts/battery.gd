@@ -12,10 +12,12 @@ func _ready() -> void:
 
 func Collect():
 	PlayerData.batteryLevel += BatteryRecharge
+	
 	PlayerData.batteryLevel = clamp(PlayerData.batteryLevel,0,100)
 	queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
+		body.get_node("Sounds/BatteryCollect").play()
 		Collect()

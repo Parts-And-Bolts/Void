@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4odq4ontnh5x"]
+[gd_scene load_steps=11 format=3 uid="uid://b4odq4ontnh5x"]
 
 [ext_resource type="Script" path="res://Scripts/robot.gd" id="1_ddlff"]
 [ext_resource type="SpriteFrames" uid="uid://cnlcwjtidm2fl" path="res://Resources/Spriteframes/0.tres" id="1_sti4o"]
 [ext_resource type="Shader" path="res://Scripts/robot.gdshader" id="2_3rf3m"]
+[ext_resource type="AudioStream" uid="uid://cdklbdgiwmsp0" path="res://Assets/Audio/jump.mp3" id="4_y0bn3"]
+[ext_resource type="AudioStream" uid="uid://bvw2il8me11i7" path="res://Assets/Audio/Fall.mp3" id="5_4e0x2"]
+[ext_resource type="AudioStream" uid="uid://bvm8lkdgwmxex" path="res://Assets/Audio/Timer-Collect.mp3" id="5_fd1a4"]
+[ext_resource type="AudioStream" uid="uid://c7jfdt0dk1dcf" path="res://Assets/Audio/walk.mp3" id="6_ctp66"]
+[ext_resource type="AudioStream" uid="uid://pspmgda6k0xr" path="res://Assets/Audio/battery-collect.mp3" id="6_diu4y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p30ap"]
 radius = 7.0
@@ -37,6 +42,30 @@ autostart = true
 
 [node name="NormalTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_y0bn3")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="TimerCollect" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_fd1a4")
+bus = &"SFX"
+
+[node name="BatteryCollect" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_diu4y")
+bus = &"SFX"
+
+[node name="Fall" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_4e0x2")
+volume_db = -6.667
+bus = &"SFX"
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_ctp66")
+bus = &"SFX"
 
 [connection signal="timeout" from="RechargeTimer" to="." method="_on_recharge_timer_timeout"]
 [connection signal="timeout" from="DrainageTimer" to="." method="_on_drainage_timer_timeout"]
