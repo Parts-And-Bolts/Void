@@ -22,6 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 
 
-func _on_body_exited(_body: Node2D) -> void:
-	var camera = get_node(cameraPath)
-	camera.enabled = false
+func _on_body_exited(body: Node2D) -> void:
+	if body is Player:
+		var camera = get_node(cameraPath)
+		camera.enabled = false

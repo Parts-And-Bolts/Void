@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://ekm6sxekunrm"]
+[gd_scene load_steps=14 format=4 uid="uid://ekm6sxekunrm"]
 
 [ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_bsq5c"]
 [ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_htrew"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://kxr83tur5rx4" path="res://Scenes/Prefabs/battery.tscn" id="5_gferj"]
 [ext_resource type="Texture2D" uid="uid://uwpktlpjik3w" path="res://Assets/Sprites/star.png" id="6_plinc"]
 [ext_resource type="PackedScene" uid="uid://nxiclba5ga1i" path="res://Scenes/Prefabs/+30.tscn" id="7_tty05"]
+[ext_resource type="PackedScene" uid="uid://q2v3j1w2ts3o" path="res://Scenes/Prefabs/enemy.tscn" id="8_pegbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j01cg"]
 size = Vector2(480, 224)
@@ -105,3 +106,6 @@ position = Vector2(392, -72)
 [node name="+31" parent="." instance=ExtResource("7_tty05")]
 position = Vector2(440, -200)
 SpawnChance = 1
+
+[node name="Enemy" parent="." instance=ExtResource("8_pegbc")]
+position = Vector2(248, -168)

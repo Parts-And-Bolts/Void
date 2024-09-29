@@ -16,6 +16,8 @@ func _on_body_entered(body: Node2D) -> void:
 		Stunned.visible = false
 		PlayerData.canControl = true
 		body.global_position = pos.global_position
+	elif body is Enemy:
+		body.queue_free()
 "
 
 [node name="DeathZone" type="Area2D"]

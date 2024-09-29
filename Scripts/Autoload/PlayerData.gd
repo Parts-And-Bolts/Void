@@ -6,7 +6,7 @@ var isRecharging = false
 var canControl = true
 var timeLeft = 120
 
-var gameStarted = true
+var gameStarted = false
 
 func setDefaults():
 	canJump = true
@@ -15,7 +15,7 @@ func setDefaults():
 	canControl = true
 	timeLeft = 120
 
-	gameStarted = true
+	gameStarted = false
 	OutOfTime.visible = false
 	Stunned.visible = false
 	recharging.visible = false

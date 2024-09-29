@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://q2v3j1w2ts3o"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_ahmlb"]
+[ext_resource type="Shader" path="res://Scripts/robot.gdshader" id="2_2gfvw"]
+[ext_resource type="SpriteFrames" uid="uid://cnlcwjtidm2fl" path="res://Resources/Spriteframes/0.tres" id="3_kuhdl"]
+[ext_resource type="AudioStream" uid="uid://cvgw6f1yi53sf" path="res://Assets/Audio/power-down.mp3" id="5_pm57p"]
+[ext_resource type="AudioStream" uid="uid://c7jfdt0dk1dcf" path="res://Assets/Audio/walk.mp3" id="8_e8u2g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p30ap"]
+radius = 7.0
+height = 28.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h5oxr"]
+shader = ExtResource("2_2gfvw")
+
+[node name="Enemy" type="CharacterBody2D"]
+modulate = Color(0.953064, 0.694828, 0.741521, 1)
+z_index = 1
+floor_stop_on_slope = false
+script = ExtResource("1_ahmlb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(-1, -14)
+shape = SubResource("CapsuleShape2D_p30ap")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_h5oxr")
+position = Vector2(-2, -16)
+sprite_frames = ExtResource("3_kuhdl")
+animation = &"idle"
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("8_e8u2g")
+bus = &"SFX"
+
+[node name="Power-down" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_pm57p")
+bus = &"SFX"
+
+[node name="Right" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(8, 0)
+
+[node name="Left" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(-10, 0)

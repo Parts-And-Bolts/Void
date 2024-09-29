@@ -1,19 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://bl61pqcgtyyq7"]
+[gd_scene load_steps=9 format=4 uid="uid://bl61pqcgtyyq7"]
 
 [ext_resource type="PackedScene" uid="uid://d1n2hev5je3h4" path="res://Scenes/Prefabs/main-tilemap.tscn" id="1_wtsio"]
 [ext_resource type="PackedScene" uid="uid://kxr83tur5rx4" path="res://Scenes/Prefabs/battery.tscn" id="2_t4ma0"]
 [ext_resource type="PackedScene" uid="uid://7rm5swnui5em" path="res://Scenes/Prefabs/Main-Camera.tscn" id="2_v036y"]
 [ext_resource type="PackedScene" uid="uid://b4odq4ontnh5x" path="res://Scenes/Prefabs/robot.tscn" id="3_4a1pe"]
-[ext_resource type="PackedScene" uid="uid://b28v20g1pkrtm" path="res://Scenes/Prefabs/push.tscn" id="3_6yerj"]
 [ext_resource type="PackedScene" uid="uid://cb436smfyw8pw" path="res://Scenes/Prefabs/room-focus.tscn" id="4_kjj6y"]
-[ext_resource type="PackedScene" uid="uid://e20y4m02qtse" path="res://Scenes/Prefabs/lever_orange.tscn" id="5_a8u4c"]
 [ext_resource type="PackedScene" uid="uid://nxiclba5ga1i" path="res://Scenes/Prefabs/+30.tscn" id="8_k46me"]
+[ext_resource type="PackedScene" uid="uid://q2v3j1w2ts3o" path="res://Scenes/Prefabs/enemy.tscn" id="9_pnay6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j01cg"]
 size = Vector2(480, 224)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k40m2"]
-size = Vector2(8, 48)
 
 [node name="Start" type="Marker2D"]
 position = Vector2(-248, 104)
@@ -37,14 +33,6 @@ tile_map_data = PackedByteArray("AAAOAAcAAAABAAEAAAANAAcAAAABAAEAAAAMAAcAAAABAAE
 [node name="Fore-Ground" parent="room-template" instance=ExtResource("1_wtsio")]
 tile_map_data = PackedByteArray("AAAGAAMAAAADAAoAAAAGAAQAAAADAAoAAAAAAAYAAAAKAAsAAAAAAAUAAAAKAAoAAAAEAAUAAAALAAoAAAAEAAYAAAALAAsAAAD8/wUAAAALAAoAAAD8/wYAAAALAAsAAAD6/wcAAAABAAsAAAD7/wUAAAABAAsAAAD2/wQAAAACAAsAAAD3/wYAAAACAAsAAAAGAAYAAAAEAAsAAAAMAAEAAAAEAAsAAAANAAMAAAAEAAsAAAAKAAYAAAAFAA0AAAAKAAcAAAAFAA0AAAAKAAUAAAAFAA0AAAAKAAQAAAAFAA0AAAAHAAQAAAAFAA0AAAAHAAUAAAAFAA0AAAAHAAYAAAAFAA0AAAAHAAcAAAAFAA0AAADz//7/AAACAAsAAAD0/wEAAAAEAAsAAADz/wIAAAAEAAwAAADz/wMAAAAEAA0AAADy/wIAAAADAAwAAADy/wMAAAADAA0AAAD+//3/AAADAAwAAAD///3/AAAEAAwAAAD8////AAAAAAoAAAD9////AAABAAoAAAABAP//AAADAAoAAAACAP//AAACAAoAAAADAP//AAAEAAoAAAAGAPj/AAAGAAoAAAAGAPn/AAAGAAsAAAAGAPr/AAAGAAsAAAAGAPv/AAAGAAsAAAAGAPz/AAAGAAsAAAAGAP3/AAAGAAwAAAD9//7/AAACAAsAAAABAP7/AAAEAAsAAAA=")
 
-[node name="Lasers1" parent="room-template" instance=ExtResource("1_wtsio")]
-tile_map_data = PackedByteArray("AAAAAAMAAAAAAAgAAAAAAAIAAAABAAgAAAAAAAEAAAACAAgAAAA=")
-
-[node name="Push" parent="room-template/Lasers1" instance=ExtResource("3_6yerj")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="room-template/Lasers1/Push"]
-shape = SubResource("RectangleShape2D_k40m2")
-
 [node name="Main-camera" parent="room-template" instance=ExtResource("2_v036y")]
 
 [node name="Robot-0" parent="room-template" instance=ExtResource("3_4a1pe")]
@@ -54,9 +42,8 @@ position = Vector2(-216, -80)
 position = Vector2(232, -8)
 gizmo_extents = 8.0
 
-[node name="Lever-Orange" parent="room-template" instance=ExtResource("5_a8u4c")]
-position = Vector2(-48, 56)
-objectPath = NodePath("../Lasers1")
-
 [node name="+30" parent="." instance=ExtResource("8_k46me")]
 position = Vector2(464, 72)
+
+[node name="Enemy" parent="." instance=ExtResource("9_pnay6")]
+position = Vector2(176, 8)

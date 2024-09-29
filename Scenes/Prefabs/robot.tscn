@@ -66,6 +66,7 @@ bus = &"SFX"
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("6_ctp66")
+volume_db = -0.3
 bus = &"SFX"
 
 [connection signal="timeout" from="RechargeTimer" to="." method="_on_recharge_timer_timeout"]

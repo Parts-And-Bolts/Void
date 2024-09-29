@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://e20y4m02qtse"]
+[gd_scene load_steps=9 format=3 uid="uid://e20y4m02qtse"]
 
 [ext_resource type="Script" path="res://Scripts/button-orange.gd" id="1_r8cb1"]
 [ext_resource type="Texture2D" uid="uid://d3ttsment2o4g" path="res://Assets/Sprites/Main-Spritesheet.png" id="2_v68wv"]
+[ext_resource type="AudioStream" uid="uid://bc5wkgs7cuf22" path="res://Assets/Audio/button-click.mp3" id="3_cwt7q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f5abm"]
 atlas = ExtResource("2_v68wv")
@@ -38,13 +39,16 @@ size = Vector2(8, 16)
 [node name="Lever-Orange" type="Area2D"]
 z_index = 4
 script = ExtResource("1_r8cb1")
-action = "interact"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e6w77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ends4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cwt7q")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

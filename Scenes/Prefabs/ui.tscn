@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://drnb6rpgsatkn"]
+[gd_scene load_steps=8 format=3 uid="uid://drnb6rpgsatkn"]
 
 [ext_resource type="FontFile" uid="uid://kneb8fxrbq0j" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_bi02f"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/ui.gd" id="1_st078"]
 [ext_resource type="Script" path="res://Scripts/battery_left.gd" id="3_s6a8p"]
+[ext_resource type="Script" path="res://Scripts/key.gd" id="3_v8o36"]
+[ext_resource type="AudioStream" uid="uid://4pdu27uat6ne" path="res://Assets/Audio/main-song.mp3" id="4_d7526"]
 [ext_resource type="Texture2D" uid="uid://dnohwpb1ksljt" path="res://Assets/Sprites/timer-display.png" id="4_f3x41"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/label.gd" id="5_fy1au"]
 
@@ -31,6 +33,30 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_bi02f")
 theme_override_font_sizes/font_size = 40
 text = "Room 1"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -102.5
+offset_top = -110.0
+offset_right = 102.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_bi02f")
+theme_override_font_sizes/font_size = 32
+text = "Press Space To Start!"
+script = ExtResource("3_v8o36")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer2"]
+stream = ExtResource("4_d7526")
+volume_db = -5.0
 
 [node name="BatteryLeft" type="Label" parent="."]
 layout_mode = 2

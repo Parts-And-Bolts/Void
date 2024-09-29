@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbt802y2ybn4w"]
+[gd_scene load_steps=4 format=3 uid="uid://bbt802y2ybn4w"]
 
+[ext_resource type="Script" path="res://Scripts/Autoload/recharging,tscn.gd" id="1_3lsn4"]
 [ext_resource type="FontFile" uid="uid://kneb8fxrbq0j" path="res://Assets/Fonts/PixelOperator8.ttf" id="1_ak3im"]
+[ext_resource type="AudioStream" uid="uid://bdiqnoqi8vdq5" path="res://Assets/Audio/stunned.mp3" id="3_tm8x0"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 2
 visible = false
+script = ExtResource("1_3lsn4")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -42,3 +45,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.327209, 0.0803662, 0.101814, 0.356863)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tm8x0")
